@@ -1,4 +1,6 @@
-Telegram.WebApp.ready();
+const tg = Telegram.WebApp;
+
+tg.ready()
 
 const userData = {
   initData: Telegram.WebApp.initData,
@@ -7,4 +9,4 @@ const userData = {
   platform: Telegram.WebApp.platform,
 };
 
-Telegram.WebApp.sendData(JSON.stringify(userData));
+tg.sendData(JSON.stringify(userData));
